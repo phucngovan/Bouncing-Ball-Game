@@ -6,7 +6,6 @@
     <script src="texxt.js"></script>
 </head>
 <body>
-Điểm:  <h3 id="count"></h3>
 
 <canvas id="canvas" style="border :3px solid black;"></canvas>
 
@@ -16,6 +15,8 @@
     canvas.width=900;
     canvas.height=700;
     let ctx=canvas.getContext("2d");
+
+
 
     function Rectangle(x,y,width,height,color,move) {
         this.x = x;
@@ -31,20 +32,29 @@
 
         }
     }
-    let rectangle=new Rectangle(100,650,250,40,"red",80);
+    let rectangle=new Rectangle(100,650,250,10,"#32CD32",80);
 
-    function Circle(x, y, dx, dy, radius, color) {
+    function Circle(x, y, dx, dy, radius, color1) {
         this.x = x;
         this.y = y;
         this.dx = dx;
         this.dy = dy;
         this.radius = radius;
-        this.color = color;
+        this.color1 = color1;
+
+        this.str=function () {
+            ctx.font = "25px Verdana";
+            let score=0;
+            ctx.fillText("Score: " + score, 10, 30);
+            score+=100;
+
+
+        }
 
         this.draw = function () {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-            ctx.fillStyle = this.color;
+            ctx.fillStyle = this.color1;
             ctx.fill();
 
         }
@@ -84,7 +94,7 @@
 
 
     }
-    let circle=new Circle(300,150,5,5,40,"black");
+    let circle=new Circle(300,150,5,5,40,"#FF0000");
 
 
     function start() {
